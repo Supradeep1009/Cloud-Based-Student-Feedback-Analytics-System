@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Feedback</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            height: 100vh;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            overflow: hidden;
+            background: #fdfdfd;
+            /* Extremely clean pure white/off-white */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5vh;
+            /* Reduced gap to bring text closer to the form */
+        }
+
+        .running-track {
+            display: flex;
+            white-space: nowrap;
+            /* Much slower and perfectly matched */
+            animation: runAcross 180s linear infinite;
+            width: max-content;
+            align-items: center;
+        }
+
+        .track-reverse {
+            animation: runAcrossReverse 180s linear infinite;
+        }
+
+        .shape {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 6rem;
+            /* Slightly smaller to fit both rows nicely */
+            font-weight: 800;
+            /* Bold and blocky */
+            color: #ceced6;
+            /* Noticeable grey color instead of transparent black */
+            opacity: 0.4;
+            /* Much higher opacity to be clearly visible */
+            user-select: none;
+            margin: 0 40px;
+            letter-spacing: -3px;
+            /* Tight modern typography */
+            text-transform: uppercase;
+        }
+
+        /* Seamless infinite scroll trick using translateX(-50%) */
+        @keyframes runAcross {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes runAcrossReverse {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 0;
+            color: #111;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            margin-bottom: 0;
+            cursor: pointer;
+            gap: 8px;
+            /* space between ratio and text */
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="background-animation">
+        <div class="running-track track-reverse">
+            <!-- Replicated to ensure it covers twice the screen width for seamless looping -->
+            <span class="shape">CLOUD BASED SECURITY SPECIALITY </span>
+            <span class="shape">CLOUD BASED SECURITY SPECIALITY </span>
+            <span class="shape">CLOUD BASED SECURITY SPECIALITY </span>
+            <span class="shape">CLOUD BASED SECURITY SPECIALITY </span>
+            <span class="shape">CLOUD BASED SECURITY SPECIALITY </span>
+            <span class="shape">CLOUD BASED SECURITY SPECIALITY </span>
+            <span class="shape">CLOUD BASED SECURITY SPECIALITY </span>
+            <span class="shape">CLOUD BASED SECURITY SPECIALITY </span>
+            <span class="shape">CLOUD BASED SECURITY SPECIALITY </span>
+            <span class="shape">CLOUD BASED SECURITY SPECIALITY </span>
+        </div>
+        <div class="running-track">
+            <!-- Replicated for seamless looping -->
+            <span class="shape">Course Code - 23SDCS05 Section 02</span>
+            <span class="shape">Course Code - 23SDCS05 Section 02</span>
+            <span class="shape">Course Code - 23SDCS05 Section 02</span>
+            <span class="shape">Course Code - 23SDCS05 Section 02</span>
+            <span class="shape">Course Code - 23SDCS05 Section 02</span>
+            <span class="shape">Course Code - 23SDCS05 Section 02</span>
+            <span class="shape">Course Code - 23SDCS05 Section 02</span>
+            <span class="shape">Course Code - 23SDCS05 Section 02</span>
+            <span class="shape">Course Code - 23SDCS05 Section 02</span>
+            <span class="shape">Course Code - 23SDCS05 Section 02</span>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <h2 id="formTitle">Course Details</h2>
+
+        <form id="feedbackForm">
+            <div id="step-1">
+                <div class="form-group">
+                    <label>Roll Number:</label>
+                    <input type="text" id="rollNumber" pattern="\d{10}" maxlength="10"
+                        title="Please enter exactly 10 numbers" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Subject:</label>
+                    <select id="subject" name="subject" required style="background-color: #fff;">
+                        <option value="" disabled selected>Select Subject</option>
+                        <option value="Cloud Based Security Speciality">Cloud Based Security Speciality</option>
+                        <option value="Network Infrastructure and Security">Network Infrastructure and Security</option>
+                        <option value="Data Analytics and Visualization">Data Analytics and Visualization</option>
+                        <option value="Software Verification and Validation">Software Verification and Validation
+                        </option>
+                    </select>
+                </div>
+
+                <button type="button" id="nextBtn">Next</button>
+            </div>
+
+            <div id="step-2" style="display: none;">
+                <h2 style="margin-top: 0; margin-bottom: 20px;">Faculty Feedback</h2>
+
+                <div class="form-group">
+                    <label>Faculty:</label>
+                    <input type="text" id="faculty" name="faculty" required readonly
+                        style="background-color: #f0f0f0; color: #333; cursor: not-allowed;"
+                        placeholder="Faculty name will appear here">
+                </div>
+
+                <div class="form-group">
+                    <label>How the teacher teaches:</label>
+                    <div style="display: flex; gap: 15px;">
+                        <label class="checkbox-label"><input type="checkbox" name="teachingStyle" value="Good">
+                            Good</label>
+                        <label class="checkbox-label"><input type="checkbox" name="teachingStyle" value="Better">
+                            Better</label>
+                        <label class="checkbox-label"><input type="checkbox" name="teachingStyle" value="Best">
+                            Best</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Interaction with the students:</label>
+                    <div style="display: flex; gap: 15px;">
+                        <label class="checkbox-label"><input type="checkbox" name="interaction" value="Frequently">
+                            Frequently</label>
+                        <label class="checkbox-label"><input type="checkbox" name="interaction" value="Rarely">
+                            Rarely</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Languages teacher uses:</label>
+                    <div style="display: flex; gap: 15px;">
+                        <label class="checkbox-label"><input type="checkbox" name="language" value="English">
+                            English</label>
+                        <label class="checkbox-label"><input type="checkbox" name="language" value="Hindi">
+                            Hindi</label>
+                        <label class="checkbox-label"><input type="checkbox" name="language" value="Telugu">
+                            Telugu</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Overall Feedback for the teacher (1-5):</label>
+                    <input type="number" name="overallRating" min="1" max="5" required placeholder="Enter 1 to 5"
+                        style="width: 100%; box-sizing: border-box;">
+                </div>
+
+                <button type="submit">Submit Feedback</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAUP8axOlShIf2FUXUkB220nOFCYgpprgc",
+            authDomain: "student-feedback-b1eab.firebaseapp.com",
+            projectId: "student-feedback-b1eab",
+            storageBucket: "student-feedback-b1eab.firebasestorage.app",
+            messagingSenderId: "800720688013",
+            appId: "1:800720688013:web:400d22bd817787b7b663c4",
+            measurementId: "G-E8D0JQN5TJ"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const form = document.getElementById('feedbackForm');
+        const nextBtn = document.getElementById('nextBtn');
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const formTitle = document.getElementById('formTitle');
+
+        // Dynamic Faculty Selection Logic
+        const subjectSelect = document.getElementById('subject');
+        const facultySelect = document.getElementById('faculty');
+
+        subjectSelect.addEventListener('change', (e) => {
+            const selectedSubject = e.target.value;
+
+            if (selectedSubject === "Network Infrastructure and Security") {
+                facultySelect.value = "Ms.Prerna Mohit";
+            } else if (selectedSubject === "Cloud Based Security Speciality") {
+                facultySelect.value = "Dr.Leena Arya";
+            } else if (selectedSubject === "Data Analytics and Visualization") {
+                facultySelect.value = "Dr.Nilu Singh";
+            } else if (selectedSubject === "Software Verification and Validation") {
+                facultySelect.value = "Dr.V.Maneesha";
+            } else {
+                facultySelect.value = "";
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const roll = document.getElementById('rollNumber');
+            const name = document.getElementById('name');
+            const subject = document.getElementById('subject');
+
+            if (roll.checkValidity() && name.checkValidity() && subject.checkValidity()) {
+                step1.style.display = 'none';
+                formTitle.style.display = 'none';
+                step2.style.display = 'block';
+            } else {
+                form.reportValidity();
+            }
+        });
+
+        // Make checkboxes act like radio buttons
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                if (this.checked) {
+                    document.querySelectorAll(`input[name="${this.name}"]`).forEach(cb => {
+                        if (cb !== this) cb.checked = false;
+                    });
+                }
+            });
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent page refresh
+
+            const rollNumber = document.getElementById('rollNumber').value.trim();
+            const name = document.getElementById('name').value.trim();
+            const subject = document.getElementById('subject').value;
+            const faculty = document.getElementById('faculty').value;
+
+            // === DLP SIMULATION (DATA MASKING) ===
+            // Mask the Roll Number before it ever reaches the cloud database
+            const secureRollHash = btoa(rollNumber + "secret_salt"); // Base64 encoding for duplicate checking
+
+            // Store the true Roll Number and Name directly in the database
+            const maskedRollNumber = rollNumber;
+            const maskedName = name;
+            // =====================================
+
+            // Collect single checked values
+            const teachingStyle = document.querySelector('input[name="teachingStyle"]:checked')?.value || "";
+            const interaction = document.querySelector('input[name="interaction"]:checked')?.value || "";
+            const language = document.querySelector('input[name="language"]:checked')?.value || "";
+
+            const overallRatingInput = document.querySelector('input[name="overallRating"]');
+            const overallRating = overallRatingInput ? Number(overallRatingInput.value) : 0;
+
+            if (!teachingStyle) {
+                alert("Please select an option for 'How the teacher teaches'.");
+                return;
+            }
+            if (!interaction) {
+                alert("Please select an option for 'Interaction with the students'.");
+                return;
+            }
+            if (!language) {
+                alert("Please select an option for 'Languages teacher uses'.");
+                return;
+            }
+
+            try {
+                const feedbacksRef = collection(db, "feedbacks");
+
+                // Prevent duplicate submissions using the highly secure anonymous hash
+                const q = query(feedbacksRef, where("secureRollHash", "==", secureRollHash));
+                const querySnapshot = await getDocs(q);
+
+                if (!querySnapshot.empty) {
+                    alert("Sorry, this Roll Number has already submitted feedback.");
+                    // Reset to step 1 so they can try a different roll
+                    step2.style.display = 'none';
+                    step1.style.display = 'block';
+                    formTitle.style.display = 'block';
+                    return;
+                }
+
+                await addDoc(feedbacksRef, {
+                    rollNumber: maskedRollNumber,
+                    secureRollHash: secureRollHash,
+                    name: maskedName,
+                    subject,
+                    faculty,
+                    teachingStyle,
+                    interaction,
+                    language,
+                    overallRating,
+                    timestamp: new Date()
+                });
+
+                // === GOOGLE SHEETS  ===
+                // Secretly send a copy of the TRUE raw text to your private Google Sheet!
+                const sheetUrl = "https://script.google.com/macros/s/AKfycbwjxK_h1LxaK3CUP1Eat4mQpwoh0DMSNwS-c1tGcV3mmRTFu58ZbiVdfaO-SQG2scil/exec";
+                const sheetData = {
+                    rollNumber: rollNumber,
+                    name: name,
+                    subject: subject,
+                    faculty: faculty,
+                    teachingStyle: teachingStyle,
+                    interaction: interaction,
+                    language: language,
+                    overallRating: overallRating
+                };
+
+                try {
+                    // Send to Google Sheets (no-cors prevents browser blocks)
+                    fetch(sheetUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(sheetData)
+                    });
+                } catch (sheetError) {
+                    console.error("Sheets Sync Error:", sheetError);
+                }
+                // ===============================================
+
+                alert("Thank you! Your feedback has been submitted successfully.");
+                form.reset();
+
+                // Go back to step 1
+                step2.style.display = 'none';
+                step1.style.display = 'block';
+                formTitle.style.display = 'block';
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("There was an error submitting your feedback. Please try again.");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
