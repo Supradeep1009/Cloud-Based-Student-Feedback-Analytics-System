@@ -38,7 +38,7 @@ Explore the fully interactive Power BI report here:
 
 ###  [Open Power BI Dashboard →](https://app.powerbi.com/groups/me/reports/598ee4f0-e46b-4f76-a455-4ac3c76ac1db?ctid=808cc83e-a546-47e7-a03f-73a1ebba24f3&pbi_source=linkShare)
 
-![Power BI Dashboard Preview](dashboard_preview.png)
+![Power BI Dashboard Preview](Screenshorts/Dashboard.png)
 *(Add your dashboard screenshot as `dashboard_preview.png` in the root folder)*
 
 ### What the Dashboard Shows
