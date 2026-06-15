@@ -56,7 +56,7 @@ Explore the fully interactive Power BI report here:
 
 Every student submission is stored as a document inside the `feedbacks` collection in real time.
 
-![Firestore Backend Preview](Screenshorts/Dashboard.png)
+![Firestore Backend Preview](Screenshorts/Firestore Backend Preview.png)
 
 
 Each document captures:
