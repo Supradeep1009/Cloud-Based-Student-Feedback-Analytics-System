@@ -39,7 +39,6 @@ Explore the fully interactive Power BI report here:
 ###  [Open Power BI Dashboard →](https://app.powerbi.com/groups/me/reports/598ee4f0-e46b-4f76-a455-4ac3c76ac1db?ctid=808cc83e-a546-47e7-a03f-73a1ebba24f3&pbi_source=linkShare)
 
 ![Power BI Dashboard Preview](Screenshorts/Dashboard.png)
-*(Add your dashboard screenshot as `dashboard_preview.png` in the root folder)*
 
 ### What the Dashboard Shows
 
@@ -57,8 +56,8 @@ Explore the fully interactive Power BI report here:
 
 Every student submission is stored as a document inside the `feedbacks` collection in real time.
 
-![Firestore Backend Preview](firestore_preview.png)
-*(Add your Firestore screenshot as `https://github.com/Supradeep1009/Cloud-Based-Student-Feedback-Analytics-System/blob/master/Screenshorts/Firestore%20Backend%20Preview.png` in the root folder)*
+![Firestore Backend Preview](Screenshorts/Dashboard.png)
+
 
 Each document captures:
 
