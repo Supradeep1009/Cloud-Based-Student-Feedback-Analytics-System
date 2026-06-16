@@ -52,7 +52,7 @@ Explore the fully interactive Power BI report here:
 
 ---
 
-## ☁️ Backend — Google Cloud Firestore
+##  Backend — Google Cloud Firestore
 
 Every student submission is stored as a document inside the `feedbacks` collection in real time.
 
@@ -105,7 +105,7 @@ Each document captures:
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 **Frontend**
 - HTML5, CSS3, Vanilla JavaScript
@@ -131,6 +131,8 @@ Each document captures:
 - Google Cloud account with Firestore enabled
 - Node.js v16+
 - Power BI Desktop (free from Microsoft)
+
+
 
 ### Setup
 
@@ -158,12 +160,7 @@ node scripts/fetch-to-sheets.js
 
 Open `analytics/StudentFeedback.pbix`, load your `.xlsx` file, and refresh the visuals.
 
----
 
----
-
-
----
 
 <div align="center">
 
@@ -174,6 +171,5 @@ Open `analytics/StudentFeedback.pbix`, load your `.xlsx` file, and refresh the v
 
 <br/>
 
-⭐ **Found this useful? Give it a star!** ⭐
 
 </div>
